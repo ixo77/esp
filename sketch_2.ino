@@ -70,7 +70,7 @@ float LT; // текущая температура левого датчика
 float RT; // температура сухого грудусника
 float WT; // разница температур сухого и мокрого
 float RTW;
-float TT;
+float TT; // разница температур правого и левого термометров
 float mm;
 float wet; // влажность воздуха
 String vod;
@@ -82,7 +82,7 @@ void setup()
   sensor_left.begin();
   sensor_right.begin();
   sensor_wet.begin();
-mm=1;
+  mm=1;
 //pinMode(PIN_FF, OUTPUT);
 pinMode(PIN_LL, OUTPUT);
 /*
@@ -110,8 +110,8 @@ TT = fabs(TT);
 if (TT >= 2) {
   if (digitalRead(PIN_LL)==LOW) {
     digitalWrite(PIN_LL, HIGH);
-}
-else if (digitalRead(PIN_LL)==HIGH){
+  }
+else if (digitalRead(PIN_LL)==HIGH) {
   digitalWrite(PIN_LL, LOW);
 }
 }
@@ -135,7 +135,7 @@ else if (digitalRead(PIN_LL)==HIGH){
   display.setCursor(40, 8);  
   display.println(String(LT , 1));
   display.setCursor(40, 32);
-    display.println(String(TT , 1));
+  display.println(String(TT , 1));
     
   display.display();
 
